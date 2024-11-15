@@ -263,13 +263,12 @@ The highest budget for a movie that is an animation or a comedy is Wild Wild Wes
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
 
 ```{r}
-
+movies %>%
+  filter(str_detect(title, "Route 666") | str_detect(title, "Belly of the Beast")) %>%
+  select(title,year,rating) %>%
+  arrange(desc(rating))
 ```
 
-
-
-
-
-
-
+Yes, Belly of the Beast: The Two Towers franchise is on the list and it's my favorite movie from Route 666.
+We could ask questions using the "or" function and arrange by rating. From this point we could demonstrate that a different film, such as the Route 666 have a lower rating in comparison to the overall higher rating than The Belly of the Beast movie that are listed.
 
