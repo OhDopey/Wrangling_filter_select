@@ -61,6 +61,15 @@ We often find that the whole data frame is not necessary or even helpful to answ
 This one is probably the most useful verb for data wrangling. You can see from the initial data check, there are 58788 movies. Some of these are even from before 1900! Let's consider only looking into movies that were made since the "New Hollywood" era, 1965 (according to a wikipedia search). How many movies does that include?
 
 ```{r}
+movies %>%      
+  filter(year >= 1965) %>%
+ filter(length > 60) %>%
+  filter(votes > 500, rating <= 9) %>%
+  filter(rating == "PG-13")
+```
+
+
+```{r}
 # Pay attention to the usage of the pipe
 movies %>%               # start with the full dataset, and then
   filter(year >= 1965)   # give me only movies where the year is greater than or equal to 1965
@@ -202,8 +211,11 @@ See if you can answer these questions:
 1. How many movies were released in 1995?
 
 ```{r}
-
+movies_ques1 <- movies %>%
+filter( year == 1995) 
 ```
+
+Movies that are made in 1995 are 1,248 movies was released.
 
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
